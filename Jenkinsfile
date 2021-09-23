@@ -1,9 +1,13 @@
 node
 {
-  stage('clone'){
+  stage('Clone'){
                 git 'https://github.com/diattara/my-app'
   }
-  stage('test maven'){
+  stage('Test unitaires'){
+                  sh 'mvn test'
+  }
+  
+  stage('Package'){
                   sh 'mvn package'
   }
 }
