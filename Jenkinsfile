@@ -1,7 +1,7 @@
 node
 {
   stage('Clone'){
-                git  'https://github.com/idiattara/CICD'
+                git clone git@github.com:idiattara/CICD.git
   }
   stage('Test unitaires'){
                   sh 'mvn test'
