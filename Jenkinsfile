@@ -2,8 +2,8 @@ node
 {
   stage('Clone'){
                 git branch: 'master',
-    credentialsId: '12345-1234-4696-af25-123455',
-    url: 'ssh://git@bitbucket.org:company/repo.git'
+    credentialsId: 'dd2f6ce2-f3e4-4860-875c-ea0b90586349',
+    url: 'ssh://git@github.com:idiattara/CICD.git'
   }
   stage('Test unitaires'){
                   sh 'mvn test'
