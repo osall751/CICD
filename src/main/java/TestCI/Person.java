@@ -2,6 +2,8 @@ package TestCI;
 public class Person {
     String name;
     int age;
+    int ag;
+    int a;
 
     public Person(String name, int age)
     {
