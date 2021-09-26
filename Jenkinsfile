@@ -16,16 +16,7 @@ node
                   sh 'mvn package'
   }
   
-
-  stage("build & SonarQube analysis") {
-              withSonarQubeEnv('My SonarQube Server') {
-                sh 'mvn clean package sonar:sonar'
-              }
-  }
- stage("Quality Gate") {
-            timeout(time: 1, unit: 'HOURS') {
-             waitForQualityGate abortPipeline: true
-              } 
-         
- } 
+stage('SonarQube analysis') {
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+    }
 }
