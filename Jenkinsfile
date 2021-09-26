@@ -1,5 +1,11 @@
 node
 {
+  
+  stage('SonarQube analysis') {
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+    }
+  }
+  
   stage('Clone'){
      git branch: 'master',
     credentialsId: 'dd2f6ce2-f3e4-4860-875c-ea0b90586349',
@@ -15,17 +21,5 @@ node
                   sh 'mvn package'
   }
   
-  stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'SonarQubeScanner'
-    }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}
+  
 }
