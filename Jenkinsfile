@@ -13,13 +13,6 @@ pipeline{
                     withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
-                    
-                    timeout(time: 1, unit: 'HOURS') {
-                        script{
-                          def qg = waitForQualityGate()
-                          
-                        }
-                  }
                 }
             }
             
