@@ -6,16 +6,15 @@ pipeline{
     
     stages{
         parallel{ 
-        stage('Sonar Analysis'){
+            stage('Sonar Analysis'){
                 steps{
                     withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
-      
                 timeout(time: 1, unit: 'HOURS') {
                         script{
                           def qg = waitForQualityGate()
-                         if (qg.status != 'OK') {
+                           if (qg.status != 'OK') {
                               error "Pipeline aborted due to quality gate failure: ${qg.status}" 
                            } 
                         }
@@ -23,7 +22,6 @@ pipeline{
                 }
              }
             }
-        }
             
         stage('Mvn  Test and Build'){
             steps{
