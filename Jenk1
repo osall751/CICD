@@ -3,7 +3,7 @@ node
 {
   
   stage('clone'){
-                  git "https://github.com/idiattara/CICD/"
+                  git url: 'https://github.com/idiattara/CICD/.git'
   }
   
 {
