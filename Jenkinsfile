@@ -10,7 +10,7 @@ node
   stage('Maven and Sonar'){
             
             parallel{
-            stage('Sonar Analysis'){
+              stage('Sonar Analysis'){
                 steps{
                     withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
@@ -23,8 +23,11 @@ node
                               error "Pipeline aborted due to quality gate failure: ${qg.status}"
                           }
                         }
-                  }
+                   }
                 }
             }
   
-}
+  }
+ }
+  }
+    
