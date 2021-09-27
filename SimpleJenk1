@@ -1,7 +1,7 @@
 node{
 
   stage('Clone'){
-                git  'https://github.com/idiattara/CICD'
+                git  'https://github.com/osall751/CICD'
   }
  
   stage('Test unitaires'){
