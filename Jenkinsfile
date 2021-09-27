@@ -1,7 +1,7 @@
 pipeline{
     agent any
     options {
-      timeout(30)
+      timeout(300)
     }
     stages{
         
