@@ -5,7 +5,7 @@ pipeline{
     }
     stages{
         
-        stage('Maven and Sonar'){
+        stage('Sonar'){
        
             parallel{
             stage('Sonar Analysis'){
@@ -23,6 +23,8 @@ pipeline{
                     }
             }
             }
+                }
+            }
             
              stage('Mvn Build'){
                 steps{
@@ -32,5 +34,4 @@ pipeline{
         }
         
       }
- }
-}
+ 
