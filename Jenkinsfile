@@ -17,11 +17,6 @@ pipeline{
                         waitForQualityGate abortPipeline: true  
                 } 
               }
-       
-        stage('Mvn  Test and Build'){
-                
-                    sh 'mvn clean package'
-            }
      }
 }
  
