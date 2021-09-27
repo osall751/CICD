@@ -12,16 +12,15 @@ pipeline{
                     }
                }
             }
-               
+             stage("Quality Gate") {
+              steps{
+                        waitForQualityGate abortPipeline: true  
+                } 
+              }
        
         stage('Mvn  Test and Build'){
-                steps{
+                
                     sh 'mvn clean package'
-                }
-                 
-                 steps{
-                    sh 'mvn test'
-                }
             }
      }
 }
