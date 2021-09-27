@@ -6,14 +6,13 @@ pipeline{
     stages{
         
         stage('Maven and Sonar'){
-            
+       
             parallel{
             stage('Sonar Analysis'){
                 steps{
                     withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
-                }
                 
                 timeout(time: 1, unit: 'HOURS') {
                         script{
