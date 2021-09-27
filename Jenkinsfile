@@ -6,12 +6,14 @@ pipeline{
     
     stages{
         stage('Sonar Analysis'){
-                steps('tes'){
+                steps{
                     withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
                 }
-            steps('tes'){
+             }
+             stage('Sonarq'){
+                steps{
                 timeout(time: 1, unit: 'HOURS') {
                         script{
                           def qg = waitForQualityGate()
