@@ -1,4 +1,6 @@
 node
+{
+  
 
   stage('Test unitaires'){
                   sh 'mvn test'
