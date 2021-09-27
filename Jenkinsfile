@@ -3,33 +3,28 @@ pipeline{
     options {
       timeout(300)
     }
+    
     stages{
         
-        stage('Sonar'){
-            parallel{
             stage('Sonar Analysis'){
-                steps{
-                    withSonarQubeEnv('sonar6') {
+               withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
-                timeout(time: 1, unit: 'HOURS') {
-                        stage("Quality Gate") {
-                                    steps {
-                                    waitForQualityGate abortPipeline: true
-                                }
-                        }
-                    }
-            }
-            }
-                }
-            }
-            
-             stage('Mvn Build'){
-                steps{
+             }
+        
+             stage("Quality Gate") {
+               waitForQualityGate abortPipeline: true                 
+              }
+                  
+             stage('Mvn  Test and Build'){
+                steps("test"){
                     sh 'mvn clean package'
                 }
+                 
+                 steps("tt"){
+                    sh 'mvn test'
+                }
             }
-        }
-        
-      }
+     }
+}
  
