@@ -1,4 +1,11 @@
 node
+
+{
+  
+  stage('clone'){
+                  git "https://github.com/idiattara/CICD/"
+  }
+  
 {
   
   stage('Test unitaires'){
