@@ -6,7 +6,6 @@ pipeline{
     stages{
         
         stage('Sonar'){
-       
             parallel{
             stage('Sonar Analysis'){
                 steps{
