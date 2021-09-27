@@ -1,18 +1,18 @@
-node
-{
-  
-  stage('Clone'){
-     git branch: 'master',
-    credentialsId: 'dd2f6ce2-f3e4-4860-875c-ea0b90586349',
-    url: 'git@github.com:idiattara/CICD.git'
-  }
-  
-  stage('Maven and Sonar'){
+@Library('javahome-libs') _
+
+pipeline{
+    agent any
+    options {
+      timeout(30)
+    }
+    stages{
+        
+        stage('Maven and Sonar'){
             
             parallel{
-              stage('Sonar Analysis'){
+            stage('Sonar Analysis'){
                 steps{
-                    withSonarQubeEnv('sonar6') {
+                    withSonarQubeEnv('sonar7') {
                         sh 'mvn sonar:sonar'
                     }
                     
@@ -23,11 +23,19 @@ node
                               error "Pipeline aborted due to quality gate failure: ${qg.status}"
                           }
                         }
-                   }
+                  }
                 }
             }
-  
-  }
- }
-  }
-    
+            
+             stage('Mvn Build'){
+                steps{
+                    sh 'mvn clean package'
+                }
+            }
+        
+     
+        }
+        
+        }
+      }
+      }
