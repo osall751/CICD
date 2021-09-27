@@ -1,8 +1,4 @@
-node
-
-stage('Clone'){
-                git  'https://github.com/idiattara/CICD'
-  }
+node{
  
   stage('Test unitaires'){
                   sh 'mvn test'
