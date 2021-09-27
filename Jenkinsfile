@@ -5,23 +5,19 @@ pipeline{
     }
     
     stages{
-        
-            stage('Sonar Analysis'){
+            stage("Sonar Analysis"){
                withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
              }
         
-             stage("Quality Gate") {
-               waitForQualityGate abortPipeline: true                 
-              }
-                  
-             stage('Mvn  Test and Build'){
-                steps("test"){
+         
+        stage('Mvn  Test and Build'){
+                steps{
                     sh 'mvn clean package'
                 }
                  
-                 steps("tt"){
+                 steps{
                     sh 'mvn test'
                 }
             }
