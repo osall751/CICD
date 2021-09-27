@@ -1,4 +1,9 @@
 node
+
+stage('Clone'){
+                git  'https://github.com/idiattara/CICD'
+  }
+  
 {
   
 
