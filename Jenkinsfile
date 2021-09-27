@@ -1,5 +1,3 @@
-@Library('javahome-libs') _
-
 pipeline{
     agent any
     options {
@@ -12,7 +10,7 @@ pipeline{
             parallel{
             stage('Sonar Analysis'){
                 steps{
-                    withSonarQubeEnv('sonar7') {
+                    withSonarQubeEnv('sonar6') {
                         sh 'mvn sonar:sonar'
                     }
                     
